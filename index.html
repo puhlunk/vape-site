@@ -1,383 +1,457 @@
-<!DOCTYPE html>
+<!-- Critical CSS -->
+<style>
+    /* Critical styles that should load first */
+    :root {
+        --color-primary: #5E35B1;
+        --color-secondary: #00BCD4;
+        --color-dark: #121212;
+        --color-light: #FFFFFF;
+        --font-primary: 'Outfit', sans-serif;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: var(--font-primary);
+        color: var(--color-dark);
+        background-color: var(--color-light);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+    
+    .page-wrapper {
+        display: flex;
+        min-height: 100vh;
+    }
+    
+    .nav-panel {
+        width: 300px;
+        background: linear-gradient(0deg, rgba(15,15,15,0.95) 0%, rgba(30,30,30,0.9) 100%);
+        color: var(--color-light);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+        transition: 0.3s ease;
+    }
+    
+    .content-panel {
+        flex: 1;
+        margin-left: 300px;
+        transition: 0.3s ease;
+    }
+    
+    @media (max-width: 768px) {
+        .page-wrapper {
+            flex-direction: column;
+        }
+        
+        .nav-panel {
+            width: 100%;
+            height: 70px;
+            flex-direction: row;
+            align-items: center;
+            padding: 0 2rem;
+            transform: translateY(0);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .content-panel {
+            margin-left: 0;
+            margin-top: 70px;
+        }
+    }
+</style>
+
+<!-- Non-critical CSS -->
+<link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'"><!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vape Station Nashville | Premium Vapes & Accessories</title>
-    <meta name="description" content="Nashville's premier vape shop offering a wide selection of premium vapes, e-liquids, and accessories. Visit us at 1310 Charlotte Ave.">
-    <link rel="stylesheet" href="styles.css">
-    <!-- Conditional CSS for GitHub Pages -->
-    <script>
-        // Check if we're on GitHub Pages
-        if (window.location.hostname.includes('github.io')) {
-            // Create and append GitHub-specific CSS
-            const githubCSS = document.createElement('link');
-            githubCSS.rel = 'stylesheet';
-            githubCSS.href = 'github-fix.css';
-            document.head.appendChild(githubCSS);
-        }
-    </script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vape Station Nashville | Premium Vapes & Accessories</title>
+<meta name="description" content="Nashville's premier vape shop offering a wide selection of premium vapes, e-liquids, and accessories. Visit us at 1310 Charlotte Ave.">
+<link rel="stylesheet" href="styles.css">
+<!-- Conditional CSS for GitHub Pages -->
+<script>
+    // Check if we're on GitHub Pages
+    if (window.location.hostname.includes('github.io')) {
+        // Create and append GitHub-specific CSS
+        const githubCSS = document.createElement('link');
+        githubCSS.rel = 'stylesheet';
+        githubCSS.href = 'github-fix.css';
+        document.head.appendChild(githubCSS);
+    }
+</script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="page-wrapper">
-        <!-- Navigation Panel (Left) -->
-        <nav class="nav-panel" id="navPanel">
-            <div class="logo-container">
-                <img src="./assets/vapelogo.svg" alt="Vape Station Logo" class="logo-image">
-                <p class="tagline">Nashville's Premier Vape Shop</p>
-            </div>
-            
-            <div class="nav-links">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#products" class="nav-link">Products</a>
-                <a href="#hookah" class="nav-link">Hookah Lounge</a>
-                <a href="#snacks" class="nav-link">Snacks & Edibles</a>
-                <a href="#brands" class="nav-link">Brands</a>
-                <a href="#about" class="nav-link">About Us</a>
-                <a href="#location" class="nav-link">Visit Us</a>
-            </div>
-            
-            <div class="contact-info">
-                <p><i class="fas fa-map-marker-alt"></i> 1310 Charlotte Ave</p>
-                <p>Nashville, TN 37203</p>
-                <p><i class="fas fa-phone"></i> (615) 649-8670</p>
-            </div>
-            
-            <div class="social-links">
-                <a href="https://www.instagram.com/vapestationllc/" target="_blank" class="social-link">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <!-- Add more social links as needed -->
-            </div>
-            
-            <div class="mobile-menu-button" id="mobileMenuButton">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+<div class="page-wrapper">
+    <!-- Navigation Panel (Left) -->
+    <nav class="nav-panel" id="navPanel">
+        <div class="logo-container">
+            <img src="./assets/vapelogo.svg" alt="Vape Station Logo" class="logo-image" width="200" height="50">
+            <p class="tagline">Nashville's Premier Vape Shop</p>
+        </div>
         
-        <!-- Content Panel (Right) -->
-        <main class="content-panel">
-            <!-- Hero Section -->
-            <section id="home" class="hero-section">
-                <div class="hero-content">
-                    <h2 class="section-title">Your Ultimate Vape & Hookah Experience</h2>
-                    <p class="hero-description">Discover Nashville's premier destination for premium vapes, hookah lounge, exotic Japanese snacks, and high-quality edibles.</p>
-                    <div class="hero-badges">
-                        <span class="hero-badge">Hookah Bar</span>
-                        <span class="hero-badge">Disposable Vapes</span>
-                        <span class="hero-badge">Japanese Snacks</span>
-                        <span class="hero-badge">Premium Edibles</span>
-                    </div>
-                    <div class="hero-cta">
-                        <a href="#location" class="cta-button">Visit Our Store</a>
-                        <a href="#products" class="cta-button secondary">Explore Products</a>
-                    </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#products" class="nav-link">Products</a>
+            <a href="#hookah" class="nav-link">Hookah Lounge</a>
+            <a href="#snacks" class="nav-link">Snacks & Edibles</a>
+            <a href="#brands" class="nav-link">Brands</a>
+            <a href="#about" class="nav-link">About Us</a>
+            <a href="#location" class="nav-link">Visit Us</a>
+        </div>
+        
+        <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 1310 Charlotte Ave</p>
+            <p>Nashville, TN 37203</p>
+            <p><i class="fas fa-phone"></i> (615) 649-8670</p>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://www.instagram.com/vapestationllc/" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <!-- Add more social links as needed -->
+        </div>
+        
+        <div class="mobile-menu-button" id="mobileMenuButton">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
+    <!-- Content Panel (Right) -->
+    <main class="content-panel">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h2 class="section-title">Your Ultimate Vape & Hookah Experience</h2>
+                <p class="hero-description">Discover Nashville's premier destination for premium vapes, hookah lounge, exotic Japanese snacks, and high-quality edibles.</p>
+                <div class="hero-badges">
+                    <span class="hero-badge">Hookah Bar</span>
+                    <span class="hero-badge">Disposable Vapes</span>
+                    <span class="hero-badge">Japanese Snacks</span>
+                    <span class="hero-badge">Premium Edibles</span>
                 </div>
-                <div class="hero-overlay"></div>
-            </section>
-            
-            <!-- Products Section -->
-            <section id="products" class="products-section">
-                <h2 class="section-title">Our Products & Experiences</h2>
-                <div class="product-categories">
-                    <div class="product-category featured">
-                        <div class="category-icon"><i class="fas fa-smoking"></i></div>
-                        <h3>Hookah Bar & Lounge</h3>
-                        <p>Relax in our premium hookah lounge with friends. Experience artisanal flavors in a welcoming atmosphere.</p>
-                    </div>
-                    <div class="product-category featured">
-                        <div class="category-icon"><i class="fas fa-bolt"></i></div>
-                        <h3>Disposable Vapes</h3>
-                        <p>Extensive selection of the latest disposable vapes with exclusive flavors and designs.</p>
-                    </div>
-                    <div class="product-category">
-                        <div class="category-icon"><i class="fas fa-wind"></i></div>
-                        <h3>Vape Devices</h3>
-                        <p>From starter kits to advanced mods, find the perfect device for your vaping journey.</p>
-                    </div>
-                    <div class="product-category">
-                        <div class="category-icon"><i class="fas fa-flask"></i></div>
-                        <h3>E-Liquids</h3>
-                        <p>Explore our extensive collection of premium e-liquids in various flavors and nicotine levels.</p>
-                    </div>
-                    <div class="product-category featured">
-                        <div class="category-icon"><i class="fas fa-cookie"></i></div>
-                        <h3>Japanese Snacks</h3>
-                        <p>Discover authentic and exotic Japanese snacks and treats you won't find anywhere else in Nashville.</p>
-                    </div>
-                    <div class="product-category featured">
-                        <div class="category-icon"><i class="fas fa-cannabis"></i></div>
-                        <h3>Premium Edibles</h3>
-                        <p>High-quality edibles in various formulations, carefully selected for quality and effectiveness.</p>
-                    </div>
-                    <div class="product-category">
-                        <div class="category-icon"><i class="fas fa-tools"></i></div>
-                        <h3>Accessories</h3>
-                        <p>Enhance your vaping experience with our range of high-quality accessories and parts.</p>
-                    </div>
-                    <div class="product-category">
-                        <div class="category-icon"><i class="fas fa-leaf"></i></div>
-                        <h3>Alternative Products</h3>
-                        <p>Discover our selection of alternative products including CBD and more.</p>
-                    </div>
+                <div class="hero-cta">
+                    <a href="#location" class="cta-button">Visit Our Store</a>
+                    <a href="#products" class="cta-button secondary">Explore Products</a>
                 </div>
-            </section>
-            
-            <!-- Hookah Lounge Section -->
-            <section id="hookah" class="hookah-section">
-                <h2 class="section-title">Premium Hookah Lounge</h2>
-                <div class="hookah-content">
-                    <div class="hookah-info">
-                        <h3>Relax & Unwind in Style</h3>
-                        <p>Experience Nashville's finest hookah lounge with premium shisha flavors, comfortable seating, and a welcoming atmosphere perfect for socializing.</p>
-                        
-                        <div class="hookah-features">
-                            <div class="hookah-feature">
-                                <i class="fas fa-award"></i>
-                                <span>Premium Hookahs</span>
-                            </div>
-                            <div class="hookah-feature">
-                                <i class="fas fa-star"></i>
-                                <span>Exclusive Flavors</span>
-                            </div>
-                            <div class="hookah-feature">
-                                <i class="fas fa-couch"></i>
-                                <span>Comfortable Lounge</span>
-                            </div>
-                            <div class="hookah-feature">
-                                <i class="fas fa-users"></i>
-                                <span>Group Sessions</span>
-                            </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+        
+        <!-- Products Section -->
+        <section id="products" class="products-section">
+            <h2 class="section-title">Our Products & Experiences</h2>
+            <div class="product-categories">
+                <div class="product-category featured">
+                    <div class="category-icon"><i class="fas fa-smoking"></i></div>
+                    <h3>Hookah Bar & Lounge</h3>
+                    <p>Relax in our premium hookah lounge with friends. Experience artisanal flavors in a welcoming atmosphere.</p>
+                </div>
+                <div class="product-category featured">
+                    <div class="category-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Disposable Vapes</h3>
+                    <p>Extensive selection of the latest disposable vapes with exclusive flavors and designs.</p>
+                </div>
+                <div class="product-category">
+                    <div class="category-icon"><i class="fas fa-wind"></i></div>
+                    <h3>Vape Devices</h3>
+                    <p>From starter kits to advanced mods, find the perfect device for your vaping journey.</p>
+                </div>
+                <div class="product-category">
+                    <div class="category-icon"><i class="fas fa-flask"></i></div>
+                    <h3>E-Liquids</h3>
+                    <p>Explore our extensive collection of premium e-liquids in various flavors and nicotine levels.</p>
+                </div>
+                <div class="product-category featured">
+                    <div class="category-icon"><i class="fas fa-cookie"></i></div>
+                    <h3>Japanese Snacks</h3>
+                    <p>Discover authentic and exotic Japanese snacks and treats you won't find anywhere else in Nashville.</p>
+                </div>
+                <div class="product-category featured">
+                    <div class="category-icon"><i class="fas fa-cannabis"></i></div>
+                    <h3>Premium Edibles</h3>
+                    <p>High-quality edibles in various formulations, carefully selected for quality and effectiveness.</p>
+                </div>
+                <div class="product-category">
+                    <div class="category-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Accessories</h3>
+                    <p>Enhance your vaping experience with our range of high-quality accessories and parts.</p>
+                </div>
+                <div class="product-category">
+                    <div class="category-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Alternative Products</h3>
+                    <p>Discover our selection of alternative products including CBD and more.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Hookah Lounge Section -->
+        <section id="hookah" class="hookah-section">
+            <h2 class="section-title">Premium Hookah Lounge</h2>
+            <div class="hookah-content">
+                <div class="hookah-info">
+                    <h3>Relax & Unwind in Style</h3>
+                    <p>Experience Nashville's finest hookah lounge with premium shisha flavors, comfortable seating, and a welcoming atmosphere perfect for socializing.</p>
+                    
+                    <div class="hookah-features">
+                        <div class="hookah-feature">
+                            <i class="fas fa-award"></i>
+                            <span>Premium Hookahs</span>
                         </div>
-                        
-                        <a href="#location" class="cta-button hookah-cta">Visit Our Lounge</a>
-                    </div>
-                    <div class="hookah-image actual-image"></div>
-                </div>
-            </section>
-            
-            <!-- Brands Section -->
-            <section id="brands" class="brands-section">
-                <h2 class="section-title">Featured Brands</h2>
-                <div class="brands-grid">
-                    <div class="brand-card">
-                        <div class="brand-logo">SMOK</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">VAPORESSO</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">VOOPOO</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">GEEK VAPE</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">NAKED 100</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">PACHAMAMA</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">HYDE</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">VUSE</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">ELF BAR</div>
-                    </div>
-                    <div class="brand-card">
-                        <div class="brand-logo">JUUL</div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Japanese Snacks & Edibles Section -->
-            <section id="snacks" class="snacks-section">
-                <h2 class="section-title">Exotic Japanese Snacks & Premium Edibles</h2>
-                <div class="snacks-grid">
-                    <div class="snack-category">
-                        <div class="snack-icon"><i class="fas fa-cookie-bite"></i></div>
-                        <h3>Authentic Japanese Treats</h3>
-                        <p>Discover unique Japanese candies, savory snacks, and limited edition flavors you won't find anywhere else in Nashville.</p>
-                    </div>
-                    <div class="snack-category">
-                        <div class="snack-icon"><i class="fas fa-utensils"></i></div>
-                        <h3>Pocky & Specialty Sweets</h3>
-                        <p>From classic Pocky sticks to exotic Kit Kat flavors and regional Japanese specialties.</p>
-                    </div>
-                    <div class="snack-category">
-                        <div class="snack-icon"><i class="fas fa-cannabis"></i></div>
-                        <h3>Premium Edibles</h3>
-                        <p>High-quality edibles made with premium ingredients for a superior experience.</p>
-                    </div>
-                    <div class="snack-category">
-                        <div class="snack-icon"><i class="fas fa-capsules"></i></div>
-                        <h3>Diverse Formulations</h3>
-                        <p>Available in various formulations and strengths to match your preferences and needs.</p>
-                    </div>
-                </div>
-                
-                <div class="snacks-showcase">
-                    <div class="snack-image">
-                        <img src="./assets/vapesnack.jpg" alt="Japanese Snacks at Vape Station">
-                    </div>
-                    <div class="snack-image">
-                        <img src="./assets/vapesnack1.jpg" alt="Premium Japanese Treats">
-                    </div>
-                    <div class="snack-image">
-                        <img src="./assets/vapesnack2.jpg" alt="Exotic Japanese Candy">
-                    </div>
-                </div>
-            </section>
-            
-            <!-- About Section -->
-            <section id="about" class="about-section">
-                <h2 class="section-title">About Vape Station</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Located in the heart of Nashville, Vape Station is your go-to destination for all things vape, hookah, exotic snacks, and premium edibles. We pride ourselves on offering expert advice, premium products, and exceptional customer service.</p>
-                        <p>Whether you're a vaping enthusiast, hookah lover, snack explorer, or just starting your journey, our knowledgeable staff is here to help you find the perfect products to suit your needs and preferences.</p>
-                        
-                        <div class="about-highlights">
-                            <div class="highlight">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Premium Quality Products</span>
-                            </div>
-                            <div class="highlight">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Expert Customer Service</span>
-                            </div>
-                            <div class="highlight">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Extensive Selection</span>
-                            </div>
-                            <div class="highlight">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Competitive Pricing</span>
-                            </div>
-                            <div class="highlight">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Hookah Lounge Experience</span>
-                            </div>
-                            <div class="highlight">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Unique Snacks & Edibles</span>
-                            </div>
+                        <div class="hookah-feature">
+                            <i class="fas fa-star"></i>
+                            <span>Exclusive Flavors</span>
+                        </div>
+                        <div class="hookah-feature">
+                            <i class="fas fa-couch"></i>
+                            <span>Comfortable Lounge</span>
+                        </div>
+                        <div class="hookah-feature">
+                            <i class="fas fa-users"></i>
+                            <span>Group Sessions</span>
                         </div>
                     </div>
-                    <div class="about-image">
-                        <img src="./assets/vape1.jpg" alt="Inside Vape Station Nashville">
-                    </div>
+                    
+                    <a href="#location" class="cta-button hookah-cta">Visit Our Lounge</a>
                 </div>
-            </section>
-            
-            <!-- Store Hours Section -->
-            <section id="hours" class="hours-section">
-                <h2 class="section-title">Store Hours</h2>
-                <div class="hours-grid">
-                    <div class="day-time">
-                        <span class="day">Monday</span>
-                        <span class="time">9 AM – 11 PM</span>
-                    </div>
-                    <div class="day-time">
-                        <span class="day">Tuesday</span>
-                        <span class="time">9 AM – 11 PM</span>
-                    </div>
-                    <div class="day-time">
-                        <span class="day">Wednesday</span>
-                        <span class="time">9 AM – 11 PM</span>
-                    </div>
-                    <div class="day-time">
-                        <span class="day">Thursday</span>
-                        <span class="time">9 AM – 11 PM</span>
-                    </div>
-                    <div class="day-time">
-                        <span class="day">Friday</span>
-                        <span class="time">9 AM – 1 AM</span>
-                    </div>
-                    <div class="day-time">
-                        <span class="day">Saturday</span>
-                        <span class="time">10 AM – 1 AM</span>
-                    </div>
-                    <div class="day-time">
-                        <span class="day">Sunday</span>
-                        <span class="time">10 AM – 10 PM</span>
-                    </div>
+                <div class="hookah-image actual-image"></div>
+            </div>
+        </section>
+        
+        <!-- Brands Section -->
+        <section id="brands" class="brands-section">
+            <h2 class="section-title">Featured Brands</h2>
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <div class="brand-logo">SMOK</div>
                 </div>
-            </section>
-            
-            <!-- Location Section -->
-            <section id="location" class="location-section">
-                <h2 class="section-title">Visit Our Store</h2>
-                <div class="location-content">
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.3991110072493!2d-86.7937423845077!3d36.16237631019246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886466efa2daf2e7%3A0xcdc57deb1a1e0f59!2s1310%20Charlotte%20Ave%2C%20Nashville%2C%20TN%2037203!5e0!3m2!1sen!2sus!4v1618604733097!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                    <div class="location-details">
-                        <div class="location-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h3>Address</h3>
-                                <p>1310 Charlotte Ave</p>
-                                <p>Nashville, TN 37203</p>
-                            </div>
-                        </div>
-                        <div class="location-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>(615) 649-8670</p>
-                            </div>
-                        </div>
-                        <div class="location-item">
-                            <i class="fas fa-car"></i>
-                            <div>
-                                <h3>Parking</h3>
-                                <p>Free parking available in front of the store</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="brand-card">
+                    <div class="brand-logo">VAPORESSO</div>
                 </div>
-            </section>
-            
-            <!-- Age Verification Banner -->
-            <div class="age-verification-banner" id="ageVerificationBanner">
-                <div class="verification-content">
-                    <p>By entering this site, you certify that you are 21 years of age or older.</p>
-                    <div class="verification-buttons">
-                        <button id="verifyAgeButton" class="verify-button">I AM 21 OR OLDER</button>
-                        <button id="rejectAgeButton" class="reject-button">I AM UNDER 21</button>
-                    </div>
+                <div class="brand-card">
+                    <div class="brand-logo">VOOPOO</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">GEEK VAPE</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">NAKED 100</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">PACHAMAMA</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">HYDE</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">VUSE</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">ELF BAR</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">JUUL</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Japanese Snacks & Edibles Section -->
+        <section id="snacks" class="snacks-section">
+            <h2 class="section-title">Exotic Japanese Snacks & Premium Edibles</h2>
+            <div class="snacks-grid">
+                <div class="snack-category">
+                    <div class="snack-icon"><i class="fas fa-cookie-bite"></i></div>
+                    <h3>Authentic Japanese Treats</h3>
+                    <p>Discover unique Japanese candies, savory snacks, and limited edition flavors you won't find anywhere else in Nashville.</p>
+                </div>
+                <div class="snack-category">
+                    <div class="snack-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Pocky & Specialty Sweets</h3>
+                    <p>From classic Pocky sticks to exotic Kit Kat flavors and regional Japanese specialties.</p>
+                </div>
+                <div class="snack-category">
+                    <div class="snack-icon"><i class="fas fa-cannabis"></i></div>
+                    <h3>Premium Edibles</h3>
+                    <p>High-quality edibles made with premium ingredients for a superior experience.</p>
+                </div>
+                <div class="snack-category">
+                    <div class="snack-icon"><i class="fas fa-capsules"></i></div>
+                    <h3>Diverse Formulations</h3>
+                    <p>Available in various formulations and strengths to match your preferences and needs.</p>
                 </div>
             </div>
             
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="footer-content">
-                    <div class="footer-left">
-                        <img src="./assets/vapelogo.svg" alt="Vape Station Logo" class="footer-logo-image">
-                        <p>Nashville's Premier Vape Shop & Hookah Lounge</p>
-                    </div>
-                    <div class="footer-right">
-                        <p>© 2025 Vape Station. All rights reserved.</p>
-                        <p class="footer-disclaimer">Products on this site are intended for adults 21 years or older.</p>
-                        <p class="footer-credit">Website by <a href="https://puhlunk.com" target="_blank">PUHLUNK</a></p>
+            <div class="snacks-showcase">
+                <div class="snack-image">
+                    <img src="./assets/vapesnack.jpg" alt="Japanese Snacks at Vape Station" loading="lazy" width="400" height="250">
+                </div>
+                <div class="snack-image">
+                    <img src="./assets/vapesnack1.jpg" alt="Premium Japanese Treats" loading="lazy" width="400" height="250">
+                </div>
+                <div class="snack-image">
+                    <img src="./assets/vapesnack2.jpg" alt="Exotic Japanese Candy" loading="lazy" width="400" height="250">
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2 class="section-title">About Vape Station</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Located in the heart of Nashville, Vape Station is your go-to destination for all things vape, hookah, exotic snacks, and premium edibles. We pride ourselves on offering expert advice, premium products, and exceptional customer service.</p>
+                    <p>Whether you're a vaping enthusiast, hookah lover, snack explorer, or just starting your journey, our knowledgeable staff is here to help you find the perfect products to suit your needs and preferences.</p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Premium Quality Products</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Customer Service</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Extensive Selection</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Competitive Pricing</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Hookah Lounge Experience</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Unique Snacks & Edibles</span>
+                        </div>
                     </div>
                 </div>
-            </footer>
-        </main>
-    </div>
-    
-    <script src="script.js"></script>
+                <div class="about-image">
+                    <img src="./assets/vape1.jpg" alt="Inside Vape Station Nashville" loading="lazy" width="500" height="400">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Store Hours Section -->
+        <section id="hours" class="hours-section">
+            <h2 class="section-title">Store Hours</h2>
+            <div class="hours-grid">
+                <div class="day-time">
+                    <span class="day">Monday</span>
+                    <span class="time">9 AM – 11 PM</span>
+                </div>
+                <div class="day-time">
+                    <span class="day">Tuesday</span>
+                    <span class="time">9 AM – 11 PM</span>
+                </div>
+                <div class="day-time">
+                    <span class="day">Wednesday</span>
+                    <span class="time">9 AM – 11 PM</span>
+                </div>
+                <div class="day-time">
+                    <span class="day">Thursday</span>
+                    <span class="time">9 AM – 11 PM</span>
+                </div>
+                <div class="day-time">
+                    <span class="day">Friday</span>
+                    <span class="time">9 AM – 1 AM</span>
+                </div>
+                <div class="day-time">
+                    <span class="day">Saturday</span>
+                    <span class="time">10 AM – 1 AM</span>
+                </div>
+                <div class="day-time">
+                    <span class="day">Sunday</span>
+                    <span class="time">10 AM – 10 PM</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Location Section -->
+        <section id="location" class="location-section">
+            <h2 class="section-title">Visit Our Store</h2>
+            <div class="location-content">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.3991110072493!2d-86.7937423845077!3d36.16237631019246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886466efa2daf2e7%3A0xcdc57deb1a1e0f59!2s1310%20Charlotte%20Ave%2C%20Nashville%2C%20TN%2037203!5e0!3m2!1sen!2sus!4v1618604733097!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="location-details">
+                    <div class="location-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>1310 Charlotte Ave</p>
+                            <p>Nashville, TN 37203</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>(615) 649-8670</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-car"></i>
+                        <div>
+                            <h3>Parking</h3>
+                            <p>Free parking available in front of the store</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Age Verification Banner -->
+        <div class="age-verification-banner" id="ageVerificationBanner">
+            <div class="verification-content">
+                <p>By entering this site, you certify that you are 21 years of age or older.</p>
+                <div class="verification-buttons">
+                    <button id="verifyAgeButton" class="verify-button">I AM 21 OR OLDER</button>
+                    <button id="rejectAgeButton" class="reject-button">I AM UNDER 21</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <img src="./assets/vapelogo.svg" alt="Vape Station Logo" class="footer-logo-image" width="150" height="40">
+                    <p>Nashville's Premier Vape Shop & Hookah Lounge</p>
+                </div>
+                <div class="footer-right">
+                    <p>© 2025 Vape Station. All rights reserved.</p>
+                    <p class="footer-disclaimer">Products on this site are intended for adults 21 years or older.</p>
+                    <p class="footer-credit">Website by <a href="https://puhlunk.com" target="_blank">PUHLUNK</a></p>
+                </div>
+            </div>
+        </footer>
+    </main>
+</div>
+
+<script src="script.js" defer></script>
 </body>
 </html>
