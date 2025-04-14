@@ -247,7 +247,7 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url('/assets/vapeinside.jpg');
+    background-image: url('./assets/vapeinside.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -477,7 +477,7 @@ section {
 }
 
 .hookah-image.actual-image {
-    background-image: url('/assets/vapebar.jpg');
+    background-image: url('./assets/vapebar.jpg');
     background-size: cover;
     background-position: center;
 }

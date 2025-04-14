@@ -1,5 +1,22 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Set up base URL for assets
+    const baseUrl = function() {
+        // Check if we're on GitHub Pages
+        if (window.location.hostname.includes('github.io')) {
+            // Get the repository name from the pathname
+            const repoName = window.location.pathname.split('/')[1];
+            return `/${repoName}`;
+        }
+        // Otherwise, assume we're at the root
+        return '';
+    }();
+    
+    // Adjust image paths if necessary
+    document.querySelectorAll('img[src^="./assets/"]').forEach(img => {
+        img.src = img.src.replace('./assets/', `${baseUrl}/assets/`);
+    });
+    
     // Element references
     const navPanel = document.getElementById('navPanel');
     const mobileMenuButton = document.getElementById('mobileMenuButton');

@@ -6,6 +6,17 @@
     <title>Vape Station Nashville | Premium Vapes & Accessories</title>
     <meta name="description" content="Nashville's premier vape shop offering a wide selection of premium vapes, e-liquids, and accessories. Visit us at 1310 Charlotte Ave.">
     <link rel="stylesheet" href="styles.css">
+    <!-- Conditional CSS for GitHub Pages -->
+    <script>
+        // Check if we're on GitHub Pages
+        if (window.location.hostname.includes('github.io')) {
+            // Create and append GitHub-specific CSS
+            const githubCSS = document.createElement('link');
+            githubCSS.rel = 'stylesheet';
+            githubCSS.href = 'github-fix.css';
+            document.head.appendChild(githubCSS);
+        }
+    </script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +29,7 @@
         <!-- Navigation Panel (Left) -->
         <nav class="nav-panel" id="navPanel">
             <div class="logo-container">
-                <img src="/assets/vapelogo.svg" alt="Vape Station Logo" class="logo-image">
+                <img src="./assets/vapelogo.svg" alt="Vape Station Logo" class="logo-image">
                 <p class="tagline">Nashville's Premier Vape Shop</p>
             </div>
             
@@ -26,8 +37,8 @@
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#products" class="nav-link">Products</a>
                 <a href="#hookah" class="nav-link">Hookah Lounge</a>
-                <a href="#brands" class="nav-link">Brands</a>
                 <a href="#snacks" class="nav-link">Snacks & Edibles</a>
+                <a href="#brands" class="nav-link">Brands</a>
                 <a href="#about" class="nav-link">About Us</a>
                 <a href="#location" class="nav-link">Visit Us</a>
             </div>
@@ -218,13 +229,13 @@
                 
                 <div class="snacks-showcase">
                     <div class="snack-image">
-                        <img src="/assets/vapesnack.jpg" alt="Japanese Snacks at Vape Station">
+                        <img src="./assets/vapesnack.jpg" alt="Japanese Snacks at Vape Station">
                     </div>
                     <div class="snack-image">
-                        <img src="/assets/vapesnack1.jpg" alt="Premium Japanese Treats">
+                        <img src="./assets/vapesnack1.jpg" alt="Premium Japanese Treats">
                     </div>
                     <div class="snack-image">
-                        <img src="/assets/vapesnack2.jpg" alt="Exotic Japanese Candy">
+                        <img src="./assets/vapesnack2.jpg" alt="Exotic Japanese Candy">
                     </div>
                 </div>
             </section>
@@ -265,7 +276,7 @@
                         </div>
                     </div>
                     <div class="about-image">
-                        <img src="/assets/vape1.jpg" alt="Inside Vape Station Nashville">
+                        <img src="./assets/vape1.jpg" alt="Inside Vape Station Nashville">
                     </div>
                 </div>
             </section>
@@ -354,7 +365,7 @@
             <footer class="footer">
                 <div class="footer-content">
                     <div class="footer-left">
-                        <img src="/assets/vapelogo.svg" alt="Vape Station Logo" class="footer-logo-image">
+                        <img src="./assets/vapelogo.svg" alt="Vape Station Logo" class="footer-logo-image">
                         <p>Nashville's Premier Vape Shop & Hookah Lounge</p>
                     </div>
                     <div class="footer-right">

@@ -1,0 +1,13 @@
+/* Fix for GitHub Pages deployment */
+
+/* Hero Section */
+.hero-section {
+    background-image: url('../assets/vapeinside.jpg') !important;
+}
+
+/* Hookah Image */
+.hookah-image.actual-image {
+    background-image: url('../assets/vapebar.jpg') !important;
+}
+
+/* This file is only loaded when deployed to GitHub Pages */
