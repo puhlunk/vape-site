@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fix for hero background image
     const heroSection = document.querySelector('.hero-section');
     if (heroSection) {
-        // Force background image to reload with the correct path
         heroSection.style.backgroundImage = 'url("assets/vapeinside.jpg")';
     }
     
@@ -24,9 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return '';
     }();
     
-    // Adjust image paths if necessary
-    document.querySelectorAll('img[src^="./assets/"]').forEach(img => {
-        img.src = img.src.replace('./assets/', `${baseUrl}/assets/`);
+    // Fix ALL image paths including snack images
+    document.querySelectorAll('img').forEach(img => {
+        const src = img.getAttribute('src');
+        if (src && src.includes('assets/')) {
+            // Handle both ./assets/ and assets/ patterns
+            const fixedSrc = src.replace(/^\.?\/?assets\//, `${baseUrl}/assets/`);
+            img.src = fixedSrc;
+        }
     });
     
     // Element references
@@ -100,42 +104,79 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Initialize animations with Intersection Observer for better performance
-    const initAnimations = function() {
-        const elements = document.querySelectorAll('.product-category, .brand-card, .day-time, .snack-category, .hookah-feature, .snack-image, .about-image');
+    // ============================================================
+    // COMPLETELY REVISED ANIMATION SYSTEM
+    // ============================================================
+    
+    // Get all elements that need to be animated
+    const animatedElements = document.querySelectorAll(
+        '.product-category, .brand-card, .day-time, .snack-category, .hookah-feature, .snack-image, .about-image'
+    );
+    
+    // Apply initial animation state
+    animatedElements.forEach((element, index) => {
+        // Store original opacity and transform for later use
+        element.dataset.originalOpacity = window.getComputedStyle(element).opacity;
         
-        // Set initial state
-        elements.forEach(function(element, index) {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = `all 0.5s ease ${index * 0.1}s`;
+        // Set initial invisible state
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
+        
+        // Flag as not yet animated
+        element.dataset.animated = 'false';
+    });
+    
+    // Function to check if element is in viewport with a generous buffer
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // Consider element in viewport if it's within 150% of the viewport height
+        return (
+            rect.top <= windowHeight * 1.5 && 
+            rect.bottom >= -windowHeight * 0.5
+        );
+    }
+    
+    // Function to animate elements when they're visible
+    function animateVisibleElements() {
+        animatedElements.forEach(element => {
+            // Only process elements that haven't been animated yet
+            if (element.dataset.animated === 'false' && isInViewport(element)) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+                element.dataset.animated = 'true';
+            }
         });
-        
-        // Create the observer with more generous threshold
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    // Stop observing once animation is done
-                    observer.unobserve(entry.target);
-                }
+    }
+    
+    // Animate elements on scroll with requestAnimationFrame for better performance
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                animateVisibleElements();
+                ticking = false;
             });
-        }, { 
-            threshold: 0.1,  // Trigger when just 10% of element is visible
-            rootMargin: '0px 0px -10% 0px'  // Add margin to trigger earlier
-        });
-        
-        // Observe each element
-        elements.forEach(element => {
-            observer.observe(element);
-        });
-    };
+            ticking = true;
+        }
+    });
     
-    // Initialize animations with better performance
-    initAnimations();
+    // Animate elements already in viewport on page load
+    // Small timeout to ensure all styles are applied
+    setTimeout(animateVisibleElements, 100);
     
-    // Preload hero background image
-    const preloadImage = new Image();
-    preloadImage.src = 'assets/vapeinside.jpg';
+    // Also trigger animation check on window resize
+    window.addEventListener('resize', animateVisibleElements);
+    
+    // ============================================================
+    // END OF ANIMATION SYSTEM
+    // ============================================================
+    
+    // Preload all important images
+    ['assets/vapeinside.jpg', 'assets/vapebar.jpg', 'assets/vapesnack.jpg', 'assets/vapesnack1.jpg', 'assets/vapesnack2.jpg', 'assets/vape1.jpg'].forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
 });
