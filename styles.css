@@ -861,6 +861,22 @@ section {
     text-decoration: underline;
 }
 
+.puhlunk-watermark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Makes it non-interactive so clicks pass through */
+    z-index: 4; /* Above all other content */
+    opacity: 0.04; /* Very subtle transparency as requested */
+    background-image: url('cache/7.png');
+    background-repeat: repeat;
+    background-position: 15% center; /* Shifted to the left a bit as requested */
+    background-size: 40% auto; /* Decent size but not huge */
+    transform: rotate(-5deg); /* Slight rotation for better aesthetics */
+  }
+
 /* ===== Responsive Styles ===== */
 @media (max-width: 1024px) {
     .about-content,
