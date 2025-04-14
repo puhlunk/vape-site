@@ -273,7 +273,25 @@ section {
 
 .hero-description {
     font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
     margin-bottom: var(--spacing-lg);
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-light);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .hero-overlay {
@@ -335,11 +353,30 @@ section {
     box-shadow: var(--shadow-sm);
     transition: var(--transition-medium);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .product-category:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
+}
+
+.product-category.featured {
+    border: 2px solid var(--color-secondary);
+}
+
+.product-category.featured::after {
+    content: 'Featured';
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    background: var(--color-secondary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 30px;
+    transform: rotate(45deg);
 }
 
 .category-icon {
@@ -355,6 +392,10 @@ section {
     font-size: 1.5rem;
 }
 
+.product-category.featured .category-icon {
+    background: var(--gradient-accent);
+}
+
 .product-category h3 {
     margin-bottom: var(--spacing-sm);
     font-size: 1.3rem;
@@ -364,6 +405,87 @@ section {
     color: var(--color-gray);
     font-size: 0.95rem;
     margin-bottom: 0;
+}
+
+/* Hookah Section */
+.hookah-section {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.hookah-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1527233512709-8fe231ebe4db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.hookah-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.hookah-section .section-title {
+    color: var(--color-light);
+}
+
+.hookah-section .section-title::after {
+    background: var(--gradient-accent);
+}
+
+.hookah-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-secondary);
+}
+
+.hookah-info p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.9;
+}
+
+.hookah-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hookah-feature {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.hookah-feature i {
+    color: var(--color-secondary);
+    font-size: 1.2rem;
+}
+
+.hookah-image {
+    background-image: url('https://images.unsplash.com/photo-1619678731442-e1210778aaea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 400px;
+    box-shadow: var(--shadow-lg);
+}
+
+.hookah-cta {
+    display: inline-block;
 }
 
 /* Brands Section */
@@ -398,6 +520,72 @@ section {
     font-size: 1.2rem;
     text-align: center;
     color: var(--color-primary);
+}
+
+/* Snacks & Edibles Section */
+.snacks-section {
+    background-color: #f9f5ff;
+    position: relative;
+    overflow: hidden;
+}
+
+.snacks-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background: var(--color-primary-light);
+    opacity: 0.1;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.snacks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 2;
+}
+
+.snack-category {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-medium);
+    text-align: center;
+}
+
+.snack-category:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.snack-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.snack-category h3 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.3rem;
+}
+
+.snack-category p {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    margin-bottom: 0;
 }
 
 /* About Section */
@@ -617,7 +805,8 @@ section {
 /* ===== Responsive Styles ===== */
 @media (max-width: 1024px) {
     .about-content,
-    .location-content {
+    .location-content,
+    .hookah-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
@@ -628,6 +817,14 @@ section {
     
     .hero-section .section-title {
         font-size: 3rem;
+    }
+    
+    .about-highlights {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .hookah-image {
+        min-height: 300px;
     }
 }
 
