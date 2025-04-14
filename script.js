@@ -1,5 +1,17 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Fix for hero background image
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+        // Force background image to reload with the correct path
+        heroSection.style.backgroundImage = 'url("assets/vapeinside.jpg")';
+    }
+    
+    // Fix background images in CSS
+    document.querySelectorAll('.hookah-image.actual-image').forEach(el => {
+        el.style.backgroundImage = 'url("assets/vapebar.jpg")';
+    });
+    
     // Set up base URL for assets
     const baseUrl = function() {
         // Check if we're on GitHub Pages
@@ -88,43 +100,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Scroll animations for elements
-    const animateOnScroll = function() {
+    // Initialize animations with Intersection Observer for better performance
+    const initAnimations = function() {
         const elements = document.querySelectorAll('.product-category, .brand-card, .day-time, .snack-category, .hookah-feature, .snack-image, .about-image');
         
-        elements.forEach(function(element) {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-            
-            if (elementPosition < screenPosition) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    };
-    
-    // Set initial state for animated elements
-    const setInitialState = function() {
-        const elements = document.querySelectorAll('.product-category, .brand-card, .day-time, .snack-category, .hookah-feature, .snack-image, .about-image');
-        
+        // Set initial state
         elements.forEach(function(element, index) {
             element.style.opacity = '0';
             element.style.transform = 'translateY(20px)';
             element.style.transition = `all 0.5s ease ${index * 0.1}s`;
         });
+        
+        // Create the observer with more generous threshold
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    // Stop observing once animation is done
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1,  // Trigger when just 10% of element is visible
+            rootMargin: '0px 0px -10% 0px'  // Add margin to trigger earlier
+        });
+        
+        // Observe each element
+        elements.forEach(element => {
+            observer.observe(element);
+        });
     };
     
-    // Initialize animations
-    setInitialState();
-    animateOnScroll(); // Run once on page load
-    
-    // Listen for scroll events
-    window.addEventListener('scroll', animateOnScroll);roll(); // Run once on page load
-    
-    // Listen for scroll events
-    window.addEventListener('scroll', animateOnScroll);
+    // Initialize animations with better performance
+    initAnimations();
     
     // Preload hero background image
     const preloadImage = new Image();
-    preloadImage.src = 'https://images.unsplash.com/photo-1562184552-997c461abbe6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80';
+    preloadImage.src = 'assets/vapeinside.jpg';
 });
