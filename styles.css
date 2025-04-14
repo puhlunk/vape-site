@@ -247,12 +247,20 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url('./assets/vapeinside.jpg');
-    background-size: cover;
-    background-position: center;
     position: relative;
     color: var(--color-light);
     padding: 0 var(--spacing-xl);
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 .hero-content {
@@ -474,12 +482,21 @@ section {
     border-radius: 8px;
     min-height: 400px;
     box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
 }
 
 .hookah-image.actual-image {
-    background-image: url('./assets/vapebar.jpg');
-    background-size: cover;
-    background-position: center;
+    position: relative;
+}
+
+.hookah-image.actual-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .hookah-cta {

@@ -179,4 +179,4 @@ document.addEventListener('DOMContentLoaded', function() {
         const img = new Image();
         img.src = src;
     });
-});
+ });
