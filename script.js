@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Scroll animations for elements
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.product-category, .brand-card, .day-time, .snack-category, .hookah-feature');
+        const elements = document.querySelectorAll('.product-category, .brand-card, .day-time, .snack-category, .hookah-feature, .snack-image, .about-image');
         
         elements.forEach(function(element) {
             const elementPosition = element.getBoundingClientRect().top;
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set initial state for animated elements
     const setInitialState = function() {
-        const elements = document.querySelectorAll('.product-category, .brand-card, .day-time, .snack-category, .hookah-feature');
+        const elements = document.querySelectorAll('.product-category, .brand-card, .day-time, .snack-category, .hookah-feature, .snack-image, .about-image');
         
         elements.forEach(function(element, index) {
             element.style.opacity = '0';
@@ -100,6 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize animations
     setInitialState();
     animateOnScroll(); // Run once on page load
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', animateOnScroll);roll(); // Run once on page load
     
     // Listen for scroll events
     window.addEventListener('scroll', animateOnScroll);

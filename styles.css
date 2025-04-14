@@ -124,14 +124,9 @@ img {
     margin-bottom: var(--spacing-xl);
 }
 
-.logo {
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: 2px;
+.logo-image {
+    max-width: 200px;
     margin-bottom: var(--spacing-xs);
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .tagline {
@@ -252,7 +247,7 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url('https://images.unsplash.com/photo-1562184552-997c461abbe6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80');
+    background-image: url('/assets/vapeinside.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -476,12 +471,15 @@ section {
 }
 
 .hookah-image {
-    background-image: url('https://images.unsplash.com/photo-1619678731442-e1210778aaea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80');
-    background-size: cover;
-    background-position: center;
     border-radius: 8px;
     min-height: 400px;
     box-shadow: var(--shadow-lg);
+}
+
+.hookah-image.actual-image {
+    background-image: url('/assets/vapebar.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .hookah-cta {
@@ -548,6 +546,7 @@ section {
     gap: var(--spacing-lg);
     position: relative;
     z-index: 2;
+    margin-bottom: var(--spacing-xl);
 }
 
 .snack-category {
@@ -588,6 +587,35 @@ section {
     margin-bottom: 0;
 }
 
+.snacks-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    position: relative;
+    z-index: 2;
+}
+
+.snack-image {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    height: 250px;
+    transition: var(--transition-medium);
+}
+
+.snack-image:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.snack-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 /* About Section */
 .about-section {
     background-color: white;
@@ -608,6 +636,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
 }
 
 .highlight {
@@ -620,6 +649,20 @@ section {
     color: var(--color-secondary);
     margin-right: var(--spacing-sm);
     font-size: 1.2rem;
+}
+
+.about-image {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    height: 100%;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* Hours Section */
@@ -774,10 +817,9 @@ section {
     align-items: flex-start;
 }
 
-.footer-logo {
-    font-size: 1.5rem;
+.footer-logo-image {
+    max-width: 150px;
     margin-bottom: var(--spacing-xs);
-    color: var(--color-secondary);
 }
 
 .footer-right {
@@ -826,6 +868,10 @@ section {
     .hookah-image {
         min-height: 300px;
     }
+    
+    .snacks-showcase {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -852,6 +898,10 @@ section {
     
     .logo-container {
         margin-bottom: 0;
+    }
+    
+    .logo-image {
+        max-width: 150px;
     }
     
     .nav-links,
@@ -918,6 +968,10 @@ section {
     .footer-right {
         text-align: center;
     }
+    
+    .snacks-showcase {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
@@ -939,7 +993,16 @@ section {
         font-size: 1rem;
     }
     
+    .hero-badges {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
     .verification-buttons {
         flex-direction: column;
+    }
+    
+    .snack-image {
+        height: 200px;
     }
 }
